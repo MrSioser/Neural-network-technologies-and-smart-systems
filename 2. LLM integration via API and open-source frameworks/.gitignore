@@ -1,0 +1,60 @@
+# --- PYTHON ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+*.log
+*.tmp
+
+# --- VIRTUAL ENVIRONMENT / DEPENDENCIES ---
+.venv/
+env/
+venv/
+ENV/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+dist/
+build/
+*.spec
+
+# --- LM Studio / local API ---
+.env
+logs/
+*.md
+!README.md
+
+# --- VS Code / IDE ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- SYSTEM ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- CACHE / MISC ---
+.cache/
+*.bak
+*.swp
+*.swo
+
+# --- MODEL FILES ---
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+
+# --- DATA ---
+data/
+datasets/
+*.csv
+*.jsonl
+*.zip
+*.tar
+*.gz
+
