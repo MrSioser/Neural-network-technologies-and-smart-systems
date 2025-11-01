@@ -1,0 +1,23 @@
+# IGNORE CSV FILES
+*.csv
+
+# IGNORE GENERATED MODELS, CHECKPOINTS
+*.pt
+*.pth
+*.pkl
+
+# IGNORE TEMPORARY PYTHON FILES
+__pycache__/
+*.pyc
+*.pyo
+
+# IGNORE ENVIRONMENT FILES
+.env/
+.venv/
+env/
+venv/
+
+
+# IGNORE IDE FILES
+.vscode/
+.idea/
