@@ -1,0 +1,15 @@
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-chroma
+chromadb
+sentence-transformers
+torch
+transformers
+unstructured
+markdown
+pypdf
+tqdm
+numpy
+scikit-learn

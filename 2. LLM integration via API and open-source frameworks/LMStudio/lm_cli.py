@@ -19,14 +19,14 @@ def main():
     parser.add_argument("--model", "-mod", type=str, default="local-model", help="Назва моделі.")
     args = parser.parse_args()
 
-    base_url = os.getenv("OPENAI_BASE_URL", "http://localhost:1234/v1")
-    api_key = os.getenv("OPENAI_API_KEY", "lm-studio")
+    load_dotenv()
+    base_url = os.environ["OPENAI_BASE_URL"]
+    api_key = os.environ["OPENAI_API_KEY"]
 
     client = OpenAI(base_url=base_url, api_key=api_key)
     console.print("[bold cyan]🔹 Підключення до LM Studio...[/bold cyan]")
     console.print(f"URL: {base_url}\nМодель: {args.model}\n")
 
-    # нескінченний цикл спілкування
     messages = [{"role": "system", "content": args.system}]
     console.print("[bold green]💬 Введи свій запит (напиши 'exit' щоб вийти)[/bold green]")
 
@@ -52,7 +52,6 @@ def main():
         console.print(Markdown(answer))
         console.rule()
 
-        # логування
         logs_path = Path("logs")
         logs_path.mkdir(exist_ok=True)
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")

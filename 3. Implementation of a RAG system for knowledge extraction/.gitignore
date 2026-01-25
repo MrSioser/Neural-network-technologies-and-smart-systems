@@ -1,0 +1,24 @@
+# --- PYTHON ---
+DontWork/
+
+# --- VIRTUAL ENVIRONMENT / DEPENDENCIES ---
+venv/
+.env/
+.env.*
+
+# --- JUPYTER NOTEBOOKS ---
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# --- CHROMA DB ---
+chroma_db/
+chroma/
+*.sqlite3
+
+# --- LANGCHAIN ---
+.cache/
+langchain.db
+
+# --- MODEL CACHE ---
+models/
+hf_cache/
