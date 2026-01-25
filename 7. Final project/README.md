@@ -1,13 +1,23 @@
-# Generating Images Using Stable Diffusion (Lab 4)
+# 🧠 Laboratory Work No. 7  
+**Course:** Neural Network Technologies and Systems  
+**Topic:** Final Project — Multimodal AI Assistant  
+
+---
 
 ## Project Overview
 
-This project demonstrates **image generation using Stable Diffusion** with a focus on **Image-to-Image transformation**.  
-It was developed as **Laboratory Work №4** for the course **“Neural Network Technologies and Systems”**.
+This project is a **final laboratory work (Lab №7)** developed for the course  
+**“Neural Network Technologies and Systems”**.
 
-The work explores diffusion-based generative models and investigates how different parameters influence the final generated images, including **strength**, **guidance scale (CFG)**, **number of inference steps**, **seed**, and **negative prompts**.
+The goal of the project is to build a **multimodal demonstration application** that integrates:
+- image generation,
+- image analysis (Visual Question Answering),
+- agent-based decision making,
+- session memory.
 
-All experiments were performed using **Google Colab** and the **Stable Diffusion v1.5** model via the **diffusers** library.
+The system combines **Stable Diffusion**, **LLaVA**, and an **agent-based architecture (CrewAI)** to demonstrate real-world usage of modern neural network technologies.
+
+All experiments and executions are performed using **Google Colab** with GPU acceleration.
 
 ---
 
@@ -20,6 +30,7 @@ All experiments were performed using **Google Colab** and the **Stable Diffusion
 - Installation  
 - Configuration  
 - Usage (Google Colab)  
+- System Architecture  
 - Experiments  
 - Results and Analysis  
 - Project Structure  
@@ -31,30 +42,26 @@ All experiments were performed using **Google Colab** and the **Stable Diffusion
 
 ## Theoretical Background
 
-Stable Diffusion is a **latent diffusion model** that generates images by iteratively denoising random noise into meaningful visual content guided by a text prompt.  
-Instead of operating directly in pixel space, the model works in a compressed latent space, which significantly improves performance and reduces memory usage.
+Modern **Large Language Models (LLMs)** and **Multimodal Models** enable systems to process and generate content across multiple modalities, including text and images.
 
-Key concepts explored in this laboratory work:
-- Forward and reverse diffusion processes  
-- Text conditioning via CLIP embeddings  
-- Image-to-Image transformation  
-- Negative prompts for artifact reduction  
+This project focuses on:
+- **Text-to-Image generation** using diffusion models
+- **Image analysis and Visual Question Answering (VQA)** using vision-language models
+- **Agent-based reasoning**, where different agents are responsible for specialized tasks
+- **Session memory**, enabling context preservation across interactions
 
 ---
 
 ## Task Description
 
-**Variant 2 — Image-to-Image (SD 1.5)**
+**Variant 2 — Multimodal Content Generation and Analysis**
 
-The laboratory assignment included:
-- Preparing input images (512×512 resolution)
-- Applying Image-to-Image generation
-- Investigating the influence of:
-  - `strength` (0.3 / 0.6 / 0.9)
-  - `guidance_scale (CFG)` (5 / 7.5 / 10)
-  - `num_inference_steps` (20 / 30 / 50)
-- Comparing results **with and without negative prompts**
-- Saving generated images with parameters encoded in filenames
+The project fulfills the following requirements:
+- Image generation from text prompts (Text → Image)
+- Image analysis and answering questions about visual content (VQA)
+- Use of a multimodal model (LLaVA)
+- Integration of an additional tool from previous labs (agent-based system)
+- Saving and reusing generated results via session memory
 
 ---
 
@@ -63,129 +70,78 @@ The laboratory assignment included:
 - Python 3  
 - Google Colab  
 - Stable Diffusion v1.5  
+- LLaVA 1.5  
 - diffusers  
 - transformers  
 - torch  
+- CrewAI  
+- LangChain  
 - Pillow (PIL)  
-- Jupyter Notebook  
+- Matplotlib  
 
-Dependencies are listed in `requirements.txt`.
+All dependencies are listed in `requirements.txt`.
 
 ---
 
 ## Installation
 
-Install required libraries in Google Colab:
+Install required libraries **inside Google Colab**:
 
 ```bash
-pip install diffusers transformers accelerate safetensors --upgrade
-pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt
 ```
+
+⚠️ **Important:**  
+This project is designed to run in **Google Colab with GPU enabled**.
 
 ---
 
 ## Configuration
 
-### Google Drive Setup
-
-Mount Google Drive in Colab:
-
-```python
-from google.colab import drive
-drive.mount('/content/drive')
-```
+### Enable GPU in Google Colab
+1. Open the notebook in Google Colab  
+2. Go to: `Runtime → Change runtime type`  
+3. Set **Hardware accelerator** to **GPU**  
 
 ---
 
 ## Usage (Google Colab)
 
-### 1. Upload Notebook
-- Upload `NTIS_LAB_4.ipynb` to Google Colab
-- Enable GPU: `Runtime → Change runtime type → GPU`
+### 1. Upload the Notebook
+- Upload `model.ipynb` to Google Colab  
+- Make sure GPU is enabled  
 
-### 2. Create Project Directory Structure
+### 2. Run the Notebook
+Execute all cells in order.  
 
-Create the following directory structure on **Google Drive**:
+### 3. Example Prompts
 
+**Image generation:**
 ```
-MyDrive/
-└── ColabNotebooks/
-    └── Ntic_lab4/
-        └── Data/
-            ├── img1.jpg
-            ├── img2.jpg
-            ├── img3.jpg
-            └── GeneralizedData/
-                ├── exp1/
-                ├── exp2/
-                ├── exp3_negative_prompt/
-                └── exp4_negative_prompt/
+Generate an image of a futuristic city at night
 ```
 
-### 3. Update Paths in the Code
-
-Ensure paths in the notebook match your Drive structure:
-
-```python
-base_path = "/content/drive/MyDrive/ColabNotebooks/Ntic_lab4/Data/"
+**Image analysis:**
+```
+Describe the image in detail
 ```
 
-Generated images are automatically saved into the corresponding experiment folders.
-
----
-
-## Experiments
-
-The following experiments were conducted:
-- **Baseline Image-to-Image generation**
-- Parameter variation experiments:
-  - Strength variation
-  - CFG variation
-  - Inference steps variation
-- Negative prompt comparison:
-  - With negative prompt
-  - Without negative prompt
-
-All generated images are stored with descriptive filenames containing the full set of parameters.
-
----
-
-## Results and Analysis
-
-The experiments demonstrate that:
-- Higher `strength` values lead to stronger deviation from the original image
-- Increasing `CFG` improves prompt adherence but may reduce naturalness
-- More inference steps increase detail but also computation time
-- Negative prompts significantly reduce artifacts and unwanted distortions
+**Visual Question Answering:**
+```
+last | What objects are visible in the image?
+```
 
 ---
 
 ## Project Structure
 
 ```
-├── Data/
-│   ├── img1.jpg
-│   ├── img2.jpg
-│   ├── img3.jpg
-│   └── GeneralizedData/
-│       ├── exp1/
-│       ├── exp2/
-│       ├── exp3_negative_prompt/
-│       └── exp4_negative_prompt/
+Final project/
 │
-├── NTIS_LAB_4.ipynb
+├── model.ipynb
 ├── requirements.txt
 └── README.md
 ```
-
----
-
-## Troubleshooting
-
-- Ensure GPU is enabled in Google Colab
-- Verify Google Drive paths in the notebook
-- Check that input images have correct resolution (512×512)
-- Restart runtime if CUDA errors occur
 
 ---
 

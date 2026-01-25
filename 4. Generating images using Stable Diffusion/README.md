@@ -1,4 +1,6 @@
-# Generating Images Using Stable Diffusion (Lab 4)
+# 🧠 Laboratory Work No. 4  
+**Course:** Neural Network Technologies and Systems  
+**Topic:** Generating Images Using Stable Diffusion   
 
 ## Project Overview
 
@@ -61,7 +63,6 @@ The laboratory assignment included:
 ## Technologies Used
 
 - Python 3  
-- Google Colab  
 - Stable Diffusion v1.5  
 - diffusers  
 - transformers  
@@ -173,7 +174,7 @@ The experiments demonstrate that:
 │       ├── exp3_negative_prompt/
 │       └── exp4_negative_prompt/
 │
-├── NTIS_LAB_4.ipynb
+├── model.ipynb
 ├── requirements.txt
 └── README.md
 ```

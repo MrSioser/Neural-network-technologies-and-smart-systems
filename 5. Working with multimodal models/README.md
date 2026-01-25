@@ -1,4 +1,6 @@
-# Working with Multimodal Models (LLaVA) — Lab 5
+# 🧠 Laboratory Work No. 5  
+**Course:** Neural Network Technologies and Systems  
+**Topic:** Working with Multimodal Models (LLaVA)   
 
 ## Project Overview
 
@@ -63,7 +65,6 @@ The laboratory assignment included:
 ## Technologies Used
 
 - Python 3  
-- Google Colab  
 - PyTorch  
 - Hugging Face Transformers  
 - LLaVA (llava-1.5-7b)  

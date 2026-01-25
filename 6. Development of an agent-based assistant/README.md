@@ -1,4 +1,6 @@
-# Agent-Based Assistant with CrewAI (Lab 6)
+# 🧠 Laboratory Work No. 6  
+**Course:** Neural Network Technologies and Systems  
+**Topic:** Agent-Based Assistant with CrewAI
 
 ## Project Overview
 
